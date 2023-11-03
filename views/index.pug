@@ -1,0 +1,23 @@
+extends layout
+
+block content
+  h1= title
+  p Myself chigurupati Rajukumar
+
+  button(type="button" class='btn btn-success',, onClick="goFaster()") Press Me
+  br
+  br
+  div#faster Increase the speed
+  script.
+   let mph = 20;
+   let change = 1;
+
+   function goFaster(){
+    mph = mph + change;
+    change += 1;
+    document.getElementById("faster").innerHTML = "MPH " + mph + " Change " + change;}
+
+  br
+  br
+  br 
+  a(class='button', href='/Dog') Dog search
