@@ -8,11 +8,6 @@ router.get('/', function(req, res, next) {
 
 
 
-const dog_controlers= require('../controllers/dog');
-/* GET costumes */
-router.get('/', dog_controlers.dog_view_all_Page );
-
-
 
 
 module.exports = router;
