@@ -18,7 +18,7 @@ exports.dog_list = async function(req, res) {
 exports.dog_view_all_Page = async function(req, res) {
 try{
 thedogs = await dog.find();
-res.render('dog', { title: 'dog Search Results', results: thedogs });
+res.render('Dog', { title: 'dog Search Results', results: thedogs });
 }
 catch(err){
 res.status(500);
