@@ -2,13 +2,21 @@ extends layout
 
 block content
   h1= title
-  - let results = [{dog_color:"brown",dog_breed :"german",dog_price:200},{dog_color:"white",dog_breed :"lab",dog_price:250},{dog_color:"black",dog_breed :"poodle",dog_price:350}]
+  div(style='text-align: right;')
+   button(type='button' class="btn btn-warning") Add New Instance
+  - let items = results
    div.container-fluid
     div.row
-     each dog,index in results
+     each dog,index in items
       div.col-sm-2(onClick=`buy(${index})`) #{dog.dog_color}
       div.col-sm-2(onClick=`buy(${index})`) #{dog.dog_breed}
       div.col-sm-2(onClick=`buy(${index})`) #{dog.dog_price}
+      div(style='text-align: right;')
+       button(type='button' class="btn btn-warning") Save
+       button(type='button' class="btn btn-warning") Ok
+       button(type='button' class="btn btn-warning") update
+       button(type='button' class="btn btn-warning") delete 
+
       br
       hr
 
