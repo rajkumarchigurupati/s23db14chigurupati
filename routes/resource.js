@@ -17,13 +17,8 @@ router.put('/dog/:id', dog_controller.dog_update_put);
 router.get('/dog/:id', dog_controller.dog_detail);
 // GET request for list of all Costume items.
 router.get('/dog', dog_controller.dog_list);
+
+
+
 module.exports = router;
-// API for our resources
-exports.api = function(req, res) {
-res.write('[');
-res.write('{"resource":"dog", ');
-res.write(' "verbs":["GET","PUT", "DELETE"] ');
-res.write('}');
-res.write(']')
-res.send();
-};
+

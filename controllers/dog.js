@@ -1,9 +1,9 @@
 var dog = require('../models/dog');
-// List of all dogs
+// List of all dog
 exports.dog_list = async function(req, res) {
     try{
-        thedogs = await dog.find();
-        res.send(thedogs);
+        thedog = await dog.find();
+        res.send(thedog);
     }
     catch(err)
     {
@@ -17,8 +17,8 @@ exports.dog_list = async function(req, res) {
 // Handle a show all view
 exports.dog_view_all_Page = async function(req, res) {
 try{
-thedogs = await dog.find();
-res.render('Dog', { title: 'dog Search Results', results: thedogs });
+thedog = await dog.find();
+res.render('Dog', { title: 'dog Search Results', results: thedog });
 }
 catch(err){
 res.status(500);
@@ -68,7 +68,7 @@ exports.dog_create_post = async function(req, res) {
 
 
 
-// Handle Costume delete on DELETE.
+// Handle dog delete on DELETE.
 exports.dog_delete = async function(req, res) {
     console.log("delete " + req.params.id)
     try {
@@ -99,6 +99,20 @@ exports.dog_update_put = async function(req, res) {
     res.status(500)
     res.send(`{"error": ${err}: Update for id ${req.params.id}
    failed`);
+    }
+   };
+
+
+   // Handle a show one view with id specified by query
+exports.dog_view_one_Page = async function(req, res) {
+    console.log("single view for id " + req.query.id)
+    try{
+    result = await dog.findById( req.query.id)
+    res.render('dogdetail',{ title: 'dog Detail', toShow: result });
+    }
+    catch(err){
+    res.status(500)
+    res.send(`{'error': '${err}'}`);
     }
    };
 
