@@ -1,0 +1,28 @@
+extends layout
+block content
+ h1= title
+ form(id='dogForm', action="/resource/dog", method="POST")
+  div.form-group
+   label.dogAttr(for='dog_color') dog Color
+   input#dog_color(type='text', name='dog_color')
+  div.form-group
+   label.dogAttr(for='dog_breed') dog Breed
+   input#dog_breed(type='text', name='dog_breed')
+  div.form-group
+   label.dogAttr(for='dog_price') dog Cost 
+   input#dog_price(type='number', name='dog_price')
+  input(type="submit")
+ script.
+  document.forms['dogForm'].addEventListener('submit', (event) => {
+    event.preventDefault();
+    fetch(event.target.action, {
+        method: 'POST',
+        body: new URLSearchParams(new FormData(event.target)) 
+    }).then((resp) => {
+        return resp.text();
+    }).then((body) => {
+        alert("Save succeded")
+    }).catch((error) => {
+        alert("Save failed " + error )
+    });
+   });
