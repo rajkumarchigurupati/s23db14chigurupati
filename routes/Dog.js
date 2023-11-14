@@ -22,5 +22,7 @@ router.get('/create', dog_controlers.dog_create_Page);
 /* GET create update page */
 router.get('/update', dog_controlers.dog_update_Page);
 
+/* GET delete dog page */
+router.get('/delete', dog_controlers.dog_delete_Page);
 
 module.exports = router;
