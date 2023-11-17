@@ -2,21 +2,19 @@ extends layout
 
 block content
   h1= title
-  div(style='text-align: right;')
-   button(type='button' class="btn btn-warning") Add New Instance
   - let items = results
+  div(class="container-fluid")
+   div(class="row m-1")
+    each item in items
+     -let destination=`dispatch(\"/dog/update?id=${item._id}\")`
+     div(class="row-sm-2", class="m-1") Item #{item.dog_color}(#{item.dog_breed}) is #{item.dog_price}
+      button.btn( class="btn-primary ml-1", onclick= destination) Update
    div.container-fluid
     div.row
      each dog,index in items
       div.col-sm-2(onClick=`buy(${index})`) #{dog.dog_color}
       div.col-sm-2(onClick=`buy(${index})`) #{dog.dog_breed}
-      div.col-sm-2(onClick=`buy(${index})`) #{dog.dog_price}
-      div(style='text-align: right;')
-       button(type='button' class="btn btn-warning") Save
-       button(type='button' class="btn btn-warning") Ok
-       button(type='button' class="btn btn-warning") update
-       button(type='button' class="btn btn-warning") delete 
-
+      div.col-sm-2(onClick=`buy(${index})`) #{dog.dog_price} 
       br
       hr
 
@@ -25,3 +23,9 @@ block content
         {
             alert(`You purchased Item ${index+1}`)
         }
+  script.
+   function dispatch(path){
+    window.location.href=path
+   }
+
+
