@@ -2,13 +2,19 @@ extends layout
 
 block content
   h1= title
+  - let createInstance = `createins(\"/dog/create\")`
+  button.btn( class="btn-success ml-1", onclick= createInstance) create
   - let items = results
   div(class="container-fluid")
    div(class="row m-1")
     each item in items
      -let destination=`dispatch(\"/dog/update?id=${item._id}\")`
+     - let detailInstance = `detailIns(\"/dog/detail?id=${item._id}\")`
+     - let deleteInstance = `deleteIns(\"/dog/delete?id=${item._id}\")`
      div(class="row-sm-2", class="m-1") Item #{item.dog_color}(#{item.dog_breed}) is #{item.dog_price}
       button.btn( class="btn-primary ml-1", onclick= destination) Update
+      button.btn( class="btn-primary ml-1", onclick= detailInstance) Detail
+      button.btn( class="btn-primary ml-1", onclick= deleteInstance) Delete
    div.container-fluid
     div.row
      each dog,index in items
@@ -27,5 +33,15 @@ block content
    function dispatch(path){
     window.location.href=path
    }
-
-
+  script.
+   function createins(path){
+    window.location.href=path
+   }
+  script.
+   function detailIns(path){
+    window.location.href=path
+   }
+  script.
+   function deleteIns(path){
+    window.location.href=path
+   }
